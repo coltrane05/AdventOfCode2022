@@ -18,15 +18,18 @@ class RockPaperScissors(Enum):
         else:
             return False
         
-    #def __lt__(self, other):
 
 
-with open("StrategyGuide.txt", 'r') as strategyGuide:
+with open("Day 2/StrategyGuide.txt", 'r') as strategyGuide:
     finalScore = 0
     for line in strategyGuide:
         finalScore += RockPaperScissors[line[2]].value
-        isGreater = RockPaperScissors[line[0]] > RockPaperScissors[line[2]]
-        print(isGreater)
+        if RockPaperScissors[line[2]] > RockPaperScissors[line[0]]:
+            finalScore += 6
+        elif RockPaperScissors[line[2]].value == RockPaperScissors[line[0]].value:
+            finalScore += 3
+
+    print(finalScore)
         
 
 
